@@ -1,6 +1,7 @@
 import {
     SIDEBAR_OPEN, SIDEBAR_CLOSE,
-    GET_PRODUCTS_BEGIN, GET_PRODUCTS_SUCCESS, GET_PRODUCTS_ERROR
+    GET_PRODUCTS_BEGIN, GET_PRODUCTS_SUCCESS, GET_PRODUCTS_ERROR,
+    GET_SINGLE_PRODUCT_BEGIN, GET_SINGLE_PRODUCT_SUCCESS, GET_SINGLE_PRODUCT_ERROR,
 } from '../actions/action'
 
 const reducer = (state, action) => {
@@ -31,11 +32,23 @@ const reducer = (state, action) => {
             return {
                 ...state, productsLoading: false, productsError: true
             }
+        case GET_SINGLE_PRODUCT_BEGIN:
+            return {
+                ...state, singleProductLoading: true,
+            }
+        case GET_SINGLE_PRODUCT_SUCCESS:
+            return {
+                ...state, singleProductLoading: false,
+                singleProduct: action.payload
+            }
+        case GET_SINGLE_PRODUCT_ERROR:
+            return {
+                ...state, singleProductLoading: false,
+                SingleProductError: true,
+            }
         default:
-            throw new Error(`Action ${action.type} is not math`);
+            throw new Error(`Action ${action.type} is not matching`);
     }
 }
 
 export default reducer;
-
-26
