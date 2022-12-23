@@ -1,7 +1,7 @@
 import { useContext, createContext, useReducer, useEffect } from "react";
 import reducer from "../reducer/filters_reducer";
 import { useProductsContext } from "./products_context";
-import { LOAD_PRODUCTS, SET_GRIDVIEW, SET_LISTVIEW, UPDATE_SORT, SORT_PRODUCTS, FILTER_PRODUCTS, UPDATE_FILTERS } from "../actions/action";
+import { LOAD_PRODUCTS, SET_GRIDVIEW, SET_LISTVIEW, UPDATE_SORT, SORT_PRODUCTS, FILTER_PRODUCTS, UPDATE_FILTERS, CLEAR_FILTERS } from "../actions/action";
 const FilterContext = createContext()
 const initialState = {
     isLoading: [],
@@ -76,10 +76,13 @@ const FilterProvider = ({ children }) => {
         })
     }
     const clearFilters = () =>{
-
+        dispatch({
+            type: CLEAR_FILTERS
+        })
     }
     return <FilterContext.Provider value={{
         ...state, setGridView, setListView, updateSort, updateFilters
+        ,clearFilters
     }}>
         {children}
     </FilterContext.Provider>

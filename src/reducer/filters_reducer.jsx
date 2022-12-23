@@ -116,6 +116,18 @@ const reducer = (state, action) => {
             return {
                 ...state, filteredProducts: tempProd
             }
+        case CLEAR_FILTERS:
+            return {
+                ...state, 
+                filters: {
+                    ...state.filters,
+                    text: '',
+                    category: "all",
+                    company: "all",
+                    price: state.filters.maxPrice,
+                    shipping: false,
+                }
+            }
         default:
             throw new Error(`Action ${action.type} is not matching`);
     }
