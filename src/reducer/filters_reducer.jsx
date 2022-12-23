@@ -37,7 +37,8 @@ const reducer = (state, action) => {
                 ...state, sort: action.payload
             }
         case SORT_PRODUCTS:
-            let tempProducts = [...state.filteredProducts]
+            const {filteredProducts} = state
+            let tempProducts = filteredProducts
             if (state.sort === "price-lowest") {
                 tempProducts = tempProducts.sort((a, b) => {
                     if (a.price < b.price) {
@@ -73,10 +74,47 @@ const reducer = (state, action) => {
                 [action.payload.name] : action.payload.value
                 }
             }
-           
         case FILTER_PRODUCTS:
+            const {allProducts} = state;
+            const {text, category, company, price, shipping} = state.filters;
+            let tempProd = allProducts;
+
+            //text
+            if(text) {
+                tempProd = tempProd.filter((prod)=>{
+                    return prod.name.toLowerCase().startsWith(text)
+                })
+            }
+
+            // category 
+            if(category !=="all"){
+                tempProd = tempProd.filter((prod)=>{
+                    return prod.category === category
+                })
+            }
+            
+            // company 
+            if(company !=="all"){
+                tempProd = tempProd.filter((prod)=>{
+                    return prod.company === company
+                })
+            }
+
+            // shipping 
+            if(shipping){
+                tempProd = tempProd.filter((prod)=>{
+                    return prod.shipping === shipping
+                })
+            }
+
+            // price 
+            tempProd = tempProd.filter((prod)=>{
+                return prod.price <= price
+            })
+
+
             return {
-                ...state, 
+                ...state, filteredProducts: tempProd
             }
         default:
             throw new Error(`Action ${action.type} is not matching`);

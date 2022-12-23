@@ -1,7 +1,6 @@
 import styled from 'styled-components/macro'
 import { useFilterContext } from '../../../context/filter_context'
 import { getUniqueValues, formatPrice } from '../../../utils/helpers'
-import { FaCheck } from 'react-icons/fa'
 
 const Filters = () => {
   const {
@@ -231,5 +230,3 @@ const Wrapper = styled.section`
 export default Filters
 
 
-
-// https://github.com/ngcuongzth/comfy-sloth-john-smilga-course.git

@@ -57,10 +57,10 @@ const FilterProvider = ({ children }) => {
     }
 
     const updateFilters = (e)=>{
-        let name = e.target.name;
-        let value = e.target.value
+        let name = e.target.name
+        let value = e.target.value.trim()
         if(name ==="category" || name ==="company"){
-            value = e.target.textContent;
+            value = e.target.textContent
         }
         if(name ==='price'){
             value = Number(value)
