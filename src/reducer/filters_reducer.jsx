@@ -69,7 +69,14 @@ const reducer = (state, action) => {
             }
         case UPDATE_FILTERS:
             return {
-                ...state,
+                ...state, filters : {...state.filters, 
+                [action.payload.name] : action.payload.value
+                }
+            }
+           
+        case FILTER_PRODUCTS:
+            return {
+                ...state, 
             }
         default:
             throw new Error(`Action ${action.type} is not matching`);
