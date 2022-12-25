@@ -1,14 +1,15 @@
 import { FaShoppingCart, FaUserMinus, FaUserPlus } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
-// import { useCartContext } from '../context/cart_context'
 // import { useUserContext } from '../context/user_context'
+import { useCartContext } from '../context/cart_context'
 import { useProductsContext } from '../context/products_context'
 
 const CartButtons = () => {
   const { closeSidebar } = useProductsContext()
-  // const { total_items, clearCart } = useCartContext()
+  const { totalItems } = useCartContext();
   // const { loginWithRedirect, myUser, logout } = useUserContext()
+
   return (
     <Wrapper className='cart-btn-wrapper'>
       <Link to='/cart' className='cart-btn'
@@ -20,8 +21,7 @@ const CartButtons = () => {
         <span className='cart-container'>
           <FaShoppingCart />
           <span className='cart-value'>
-            {/* {total_items} */}
-            1
+            {totalItems}
           </span>
         </span>
       </Link>

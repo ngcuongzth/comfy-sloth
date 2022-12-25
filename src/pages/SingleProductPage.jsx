@@ -8,70 +8,71 @@ import ProductImages from "../components/Layouts/SingleProduct/ProductImages";
 import Stars from '../components/Layouts/SingleProduct/Stars'
 import { formatPrice } from '../utils/helpers'
 import AddToCart from "../components/Layouts/SingleProduct/AddToCart";
+
 const SingleProductPage = () => {
-    const { getSingleProduct, singleProduct,
-        singleProductLoading: loading, singleProductError: error,
-    } = useProductsContext();
-    const { id } = useParams();
-    const navigate = useNavigate();
+  const { getSingleProduct, singleProduct,
+    singleProductLoading: loading, singleProductError: error,
+  } = useProductsContext();
+  const { id } = useParams();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        getSingleProduct(id)
-    }, [])
+  useEffect(() => {
+    getSingleProduct(id)
+  }, [])
 
-    useEffect(() => {
-        if (error) {
-            setTimeout(() => {
-                navigate("/")
-            }, 3000)
-        }
-    }, error)
-    const { name,
-        price,
-        description,
-        stock,
-        stars,
-        reviews,
-        id: sku,
-        company,
-        images, } = singleProduct
-
-    if (loading) {
-        return <Loading />
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        navigate("/")
+      }, 3000)
     }
-    return (
-        <Wrapper>
-            <PageHero title={name} product />
-            <div className='section section-center page'>
-                <Link to='/products' className='btn'>
-                    back to products
-                </Link>
-                <div className=' product-center'>
-                    <ProductImages images={images} />
-                    <section className='content'>
-                        <h2>{name}</h2>
-                        <Stars stars={stars} reviews={reviews} />
-                        <h5 className='price'> {formatPrice(price)}</h5>
-                        <p className='desc'> {description}</p>
-                        <p className='info'>
-                            <span>Available : </span>
-                            {stock > 0 ? 'In stock' : 'out of stock'}
-                        </p>
-                        <p className='info'>
-                            <span>ID : </span>
-                            {sku}
-                        </p>
-                        <p className='info'>
-                            <span>Brand : </span>
-                            {company}
-                        </p>
-                        <hr />
-                        {stock > 0 && <AddToCart product={singleProduct} />}
-                    </section>
-                </div>
-            </div>
-        </Wrapper>
-    )
+  }, [error])
+  const { name,
+    price,
+    description,
+    stock,
+    stars,
+    reviews,
+    id: sku,
+    company,
+    images } = singleProduct
+
+  if (loading) {
+    return <Loading />
+  }
+  return (
+    <Wrapper>
+      <PageHero title={name} product />
+      <div className='section section-center page'>
+        <Link to='/products' className='btn'>
+          back to products
+        </Link>
+        <div className=' product-center'>
+          <ProductImages images={images} />
+          <section className='content'>
+            <h2>{name}</h2>
+            <Stars stars={stars} reviews={reviews} />
+            <h5 className='price'> {formatPrice(price)}</h5>
+            <p className='desc'> {description}</p>
+            <p className='info'>
+              <span>Available : </span>
+              {stock > 0 ? `In stock - ${stock} items` : 'out of stock'}
+            </p>
+            <p className='info'>
+              <span>ID : </span>
+              {sku}
+            </p>
+            <p className='info'>
+              <span>Brand : </span>
+              {company}
+            </p>
+            <hr />
+            {stock > 0 && <AddToCart product={singleProduct} />}
+          </section>
+        </div>
+      </div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.main`
