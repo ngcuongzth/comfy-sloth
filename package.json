@@ -4,8 +4,11 @@
   "private": true,
   "dependencies": {
     "@auth0/auth0-react": "^1.12.0",
+<<<<<<< HEAD
     "@stripe/react-stripe-js": "^1.16.1",
     "@stripe/stripe-js": "^1.46.0",
+=======
+>>>>>>> 14fa4f18d8dd0f844836552150d8beb213e52171
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
