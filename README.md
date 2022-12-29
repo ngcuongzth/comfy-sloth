@@ -1,14 +1,8 @@
-const { totalItems, totalAmount } = state.cart.reduce(
-(total, cartItem) => {
-const { amount, price } = cartItem
+# dotenv
 
-                    total.totalItems += amount
-                    total.totalAmount += price * amount
-                    return total
-                },
-                {
-                    totalItems: 0,
-                    totalAmount: 0,
-                }
-            )
-            return { ...state, totalItems, totalAmount }
+npm install dotenv --save
+
+# stripe
+
+npm install stripe --save
+npm install --save @stripe/react-stripe-js @stripe/stripe-js

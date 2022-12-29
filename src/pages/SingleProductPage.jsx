@@ -18,7 +18,8 @@ const SingleProductPage = () => {
 
   useEffect(() => {
     getSingleProduct(id)
-  }, [])
+    // eslint-disable-next-line
+  }, [id])
 
   useEffect(() => {
     if (error) {
@@ -26,6 +27,7 @@ const SingleProductPage = () => {
         navigate("/")
       }, 3000)
     }
+    // eslint-disable-next-line
   }, [error])
   const { name,
     price,

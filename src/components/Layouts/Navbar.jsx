@@ -1,12 +1,13 @@
 import styled from 'styled-components/macro'
 import logo from '../../assets/logo.svg'
 import { FaBars } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { links } from '../../utils/constants'
 import CartButtons from '.././CartButtons'
 import { useProductsContext } from '../../context/products_context'
+import { useUserContext } from '../../context/user_context'
 const Navbar = () => {
-  // const { myUser } = useUserContext()
+  const { myUser } = useUserContext();
   const { openSidebar } = useProductsContext()
   return (
     <NavContainer>
@@ -28,15 +29,15 @@ const Navbar = () => {
             const { id, text, url } = link
             return (
               <li key={id}>
-                <Link to={url}>{text}</Link>
+                <NavLink className="nav-link" to={url}>{text}</NavLink>
               </li>
             )
           })}
-          {/* {myUser && ( */}
-          <li>
-            <Link to='/checkout'>checkout</Link>
-          </li>
-          {/* )} */}
+          {myUser && (
+            <li>
+              <Link to='/checkout'>checkout</Link>
+            </li>
+          )}
         </ul>
         <CartButtons />
       </div>
@@ -74,6 +75,10 @@ const NavContainer = styled.nav`
   }
   .nav-links {
     display: none;
+  }
+  .nav-link.active{
+    border-bottom: 2px solid var(--clr-primary-7);
+    color: var(--clr-primary-7);
   }
   .cart-btn-wrapper {
     display: none;

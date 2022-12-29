@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro'
-import { PageHero, StripeCheckout } from '../components'
+import { PageHero } from '../components'
 
 import { Link } from 'react-router-dom'
 // import { useCartContext } from '../context/cart_context'

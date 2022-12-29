@@ -2,11 +2,12 @@ import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import { formatPrice } from '../../../utils/helpers'
 import { useCartContext } from '../../../context/cart_context'
+import { useUserContext } from '../../../context/user_context'
 
 const CartTotals = () => {
   const { totalAmount, shipping_fee } = useCartContext()
   // const { myUser, loginWithRedirect } = useUserContext()
-
+  const {myUser, loginWithRedirect} = useUserContext();
   return (
     <Wrapper>
       <div>
@@ -20,21 +21,19 @@ const CartTotals = () => {
           <hr />
           <h4>
             order total :{' '}
-            {/* <span>{formatPrice(totalAmount + shipping_fee)}</span> */}
-            <span>{formatPrice(totalAmount)}</span>
-
+            <span>{formatPrice(totalAmount + shipping_fee)}</span>
           </h4>
         </article>
-        {/* {myUser ? (
-           */}
+        {myUser ? 
+          
         <Link to='/checkout' className='btn'>
           proceed to checkout
-        </Link>
-        {/* ) : (
-          <button type='button' className='btn' onClick={loginWithRedirect}>
+        </Link> 
+        : 
+        <button type='button' className='btn' onClick={loginWithRedirect}>
             login
-          </button>
-        )} */}
+        </button>
+        } 
       </div>
     </Wrapper>
   )

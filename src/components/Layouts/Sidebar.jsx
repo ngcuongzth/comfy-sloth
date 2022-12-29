@@ -5,9 +5,10 @@ import { links } from '../../utils/constants'
 import styled from 'styled-components/macro'
 import CartButtons from './../CartButtons'
 import { useProductsContext } from '../../context/products_context'
+import { useUserContext } from '../../context/user_context'
 
 const Sidebar = () => {
-  // const { myUser } = useUserContext()
+  const { myUser } = useUserContext()
   const { isSidebarOpen, closeSidebar } = useProductsContext();
 
   return (
@@ -39,7 +40,7 @@ const Sidebar = () => {
               </li>
             )
           })}
-          {/* {myUser && ( */}
+          {myUser && 
           <li>
             <Link to='/checkout'
               onClick={() => {
@@ -49,7 +50,7 @@ const Sidebar = () => {
               checkout
             </Link>
           </li>
-          {/* )} */}
+         }
         </ul>
         <CartButtons />
       </aside>

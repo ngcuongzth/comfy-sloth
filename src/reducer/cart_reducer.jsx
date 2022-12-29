@@ -66,20 +66,20 @@ const reducer = (state, action) => {
             const { idCart, act } = action.payload;
             const tempCart = state.cart.map((prod) => {
                 if (prod.id === idCart) {
+                    let newAmount;
                     if (act === "increase") {
-                        let newAmount = prod.amount + 1;
+                        newAmount = prod.amount + 1;
                         if (newAmount > prod.stock) {
                             newAmount = prod.stock
                         }
-                        return { ...prod, amount: newAmount }
                     }
                     if (act === "decrease") {
-                        let newAmount = prod.amount - 1;
+                        newAmount = prod.amount - 1;
                         if (newAmount < 1) {
                             newAmount = 1;
                         }
-                        return { ...prod, amount: newAmount }
                     }
+                    return { ...prod, amount: newAmount }
                 }
                 else {
                     return prod
