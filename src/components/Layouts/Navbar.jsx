@@ -7,11 +7,7 @@ import CartButtons from '.././CartButtons'
 import { useProductsContext } from '../../context/products_context'
 import { useUserContext } from '../../context/user_context'
 const Navbar = () => {
-<<<<<<< HEAD
   const { myUser } = useUserContext();
-=======
-  const {myUser} = useUserContext();
->>>>>>> 14fa4f18d8dd0f844836552150d8beb213e52171
   const { openSidebar } = useProductsContext()
   return (
     <NavContainer>
@@ -38,17 +34,10 @@ const Navbar = () => {
             )
           })}
           {myUser && (
-<<<<<<< HEAD
             <li>
               <Link to='/checkout'>checkout</Link>
             </li>
           )}
-=======
-          <li>
-            <Link to='/checkout'>checkout</Link>
-          </li>
-           )}
->>>>>>> 14fa4f18d8dd0f844836552150d8beb213e52171
         </ul>
         <CartButtons />
       </div>
