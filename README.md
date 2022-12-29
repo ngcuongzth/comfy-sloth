@@ -1,14 +1,5 @@
-const { totalItems, totalAmount } = state.cart.reduce(
-(total, cartItem) => {
-const { amount, price } = cartItem
+npm install @auth0/auth0-react
 
-                    total.totalItems += amount
-                    total.totalAmount += price * amount
-                    return total
-                },
-                {
-                    totalItems: 0,
-                    totalAmount: 0,
-                }
-            )
-            return { ...state, totalItems, totalAmount }
+// domain : ngcuongzth.us.auth0.com
+// client id : a6hGLXDr0QKd8HjX7fg9N6TkLqKM3eU9
+
