@@ -12,9 +12,8 @@ npm install axios
 # dotenv
 npm install dotenv 
 # stripe 
-npm install stripe/react-stripe-js 
-npm install stripe/stripe-js 
 npm install --save stripe
+npm install --save @stripe/react-stripe-js @stripe/stripe-js
 
 # netlify-cli
 npm install netlify-cli -D

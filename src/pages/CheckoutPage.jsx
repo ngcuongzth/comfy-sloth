@@ -1,25 +1,25 @@
 import styled from 'styled-components/macro'
 import { PageHero } from '../components'
-
+import StripeCheckout from '../components/Layouts/Checkout/StripeCheckout'
 import { Link } from 'react-router-dom'
-// import { useCartContext } from '../context/cart_context'
+import { useCartContext } from '../context/cart_context'
 
 const CheckoutPage = () => {
-    // const { cart } = useCartContext()
+    const { cart } = useCartContext()
     return (
         <main>
             <PageHero title='checkout' />
             <Wrapper className='page'>
-                {/* {cart.length < 1 ? ( */}
-                <div className='empty'>
-                    <h2>your cart is empty</h2>
-                    <Link to='/products' className='btn'>
-                        fill it
-                    </Link>
-                </div>
-                {/* ) : (
-                <StripeCheckout />
-                )} */}
+                {cart.length < 1 ? 
+                 <div className='empty'>
+                 <h2>your cart is empty</h2>
+                 <Link to='/products' className='btn'>
+                     fill it
+                 </Link>
+             </div>
+                : 
+                <StripeCheckout/>
+                }
             </Wrapper>
         </main>
     )

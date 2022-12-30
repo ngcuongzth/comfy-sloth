@@ -18,9 +18,12 @@ const App = () => {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/products/:id" element={<SingleProductPage />} />
-            <Route path="/checkout" element={<PrivateRoute />}>
-              <Route index element={<CheckoutPage />} />
+             <Route path="/checkout" 
+                element={<PrivateRoute>
+                            <CheckoutPage/>
+                        </PrivateRoute>}>
             </Route>
+
           </Route>
         </Routes>
       </Router>

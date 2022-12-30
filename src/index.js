@@ -13,10 +13,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
   <Auth0Provider
-    // domain = {process.env.REACT_APP_AUTH0_DOMAIN}
-    // clientId = {process.env.REACT_APP_AUTH0_CLIENT_ID}
-    domain='ngcuongzth.us.auth0.com'
-    clientId='a6hGLXDr0QKd8HjX7fg9N6TkLqKM3eU9'
+    domain = {process.env.REACT_APP_AUTH_DOMAIN}
+    clientId ={process.env.REACT_APP_AUTH_CLIENT_ID}
     redirectUri={window.location.origin}
     cacheLocation = 'localstorage'
   >
