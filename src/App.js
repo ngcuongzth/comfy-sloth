@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  HomePage, CartPage, CheckoutPage, ErrorPage,
+  ProductsPage, SingleProductPage, PrivateRoute,
+  AboutPage, AuthWrapper
+} from './pages'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { SharedLayout } from './components'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <AuthWrapper>
+      <Router>
+        <Routes>
+          <Route path="/" element={<SharedLayout />}>
+            <Route index element={<HomePage />} />
+            <Route path="*" element={<ErrorPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/products/:id" element={<SingleProductPage />} />
+            <Route path="/checkout" element={<PrivateRoute />}>
+              <Route index element={<CheckoutPage />} />
+            </Route>
+          </Route>
+        </Routes>
+      </Router>
+    </AuthWrapper>
+  )
 }
 
-export default App;
+export default App
