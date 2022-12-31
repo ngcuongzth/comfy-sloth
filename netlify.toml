@@ -1,2 +1,7 @@
 [build]
 functions = "./functions"
+
+[[redireacts]]
+from = "/*"
+to = "/index.html"
+status = 200
